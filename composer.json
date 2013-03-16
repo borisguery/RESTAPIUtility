@@ -1,0 +1,14 @@
+{
+    "name": "borisguery/media-type",
+    "description": "Media Type for REST API",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Boris Guéry",
+            "email": "guery.b@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/http-foundation": "2.2.x-dev"
+    }
+}
