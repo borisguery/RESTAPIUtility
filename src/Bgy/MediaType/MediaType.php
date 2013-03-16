@@ -1,6 +1,6 @@
 <?php
 
-namespace Bgy;
+namespace Bgy\MediaType;
 
 class MediaType
 {
@@ -8,13 +8,15 @@ class MediaType
     private $subtype;
     private $format;
     private $version;
+    private $parameters;
 
-    public function __construct($type, $subtype, $format, $version)
+    public function __construct($type, $subtype, $format = null, $version = null, array $parameters = array())
     {
         $this->type    = $type;
-        $this->subtype = $type;
+        $this->subtype = $subtype;
         $this->format  = $format;
         $this->version = $version;
+        $this->parameters = $parameters;
     }
 
     public function getType()
@@ -39,9 +41,22 @@ class MediaType
 
     public function __toString()
     {
-        return sprintf(
-            '%s/%s+%s; v=%s',
-            $this->getType(), $this->getSubtype(), $this->getFormat(), $this->getVersion()
-        );
+        $str = sprintf('%s/%s', $this->getType(), $this->getSubtype());
+
+        if (!empty($this->format)) {
+            $str .= sprintf('+%s', $this->format);
+        }
+
+        if  (!empty($this->version)) {
+            $str .= sprintf('; version=%s', $this->version);
+        }
+
+        if  (!empty($this->parameters)) {
+            foreach ($this->parameters as $name => $value) {
+                $str .= sprintf('; %s=%s', $name, $value);
+            }
+        }
+
+        return $str;
     }
 }
