@@ -9,6 +9,11 @@
         }
     ],
     "require": {
-        "symfony/http-foundation": "2.2.x-dev"
+        "symfony/http-foundation": "2.2.x-dev",
+        "zendframework/zend-http": "2.2.*",
+        "doctrine/common": "2.2.0BETA2"
+    },
+    "autoload": {
+        "psr-0": { "Bgy" : "src/" }
     }
 }
